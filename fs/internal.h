@@ -187,6 +187,7 @@ loff_t iomap_apply(struct inode *inode, loff_t pos, loff_t length,
 /* direct-io.c: */
 int sb_init_dio_done_wq(struct super_block *sb);
 
+
 #ifdef CONFIG_FILE_TABLE_DEBUG
 void global_filetable_print_warning_once(void);
 void global_filetable_add(struct file *filp);
@@ -212,3 +213,9 @@ static inline void global_filetable_delayed_print(struct mount *mnt)
 }
 
 #endif /* CONFIG_FILE_TABLE_DEBUG */
+
+/*
+ * fs/stat.c:
+ */
+int do_statx(int dfd, const char __user *filename, unsigned flags,
+	     unsigned int mask, struct statx __user *buffer);
